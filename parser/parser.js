@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 
 class Parser {
-    loadProd = async (req, res) => {
+    async loadProd  (req, res) {
         try {
             const salads = [];
             const firstDish = [];
