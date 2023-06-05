@@ -18,7 +18,8 @@ class Parser {
                 ignoreHTTPSErrors: true
             });    
             const page = await browser.newPage();  
-            await page.goto('https://avhm.ru/salaty#2');   
+            await page.goto('https://avhm.ru/salaty#2');
+            await page.waitForTimeout(700);   
             const data = await page.evaluate(() => {         
                 return {
                     html: document.documentElement.innerHTML,
@@ -36,8 +37,10 @@ class Parser {
                     salads.push(sItem);
             })
             await page.click('#nav245165051 > div > div.t228__centerside > nav > ul > li:nth-child(2) > a');
+            await page.waitForTimeout(100);
             await page.click('#nav245165051 > div > div.t228__centerside > nav > ul > li:nth-child(2) > div > div > div > ul > li:nth-child(4) > a');
-            await page.waitForTimeout(700);            
+            
+            await page.waitForTimeout(700); 
             const data2 = await page.evaluate(() => {         
                 return {
                     html: document.documentElement.innerHTML,
@@ -55,7 +58,9 @@ class Parser {
                 firstDish.push(fItem);
             })
             await page.click('#nav245165051 > div > div.t228__centerside > nav > ul > li:nth-child(2) > a');
+            await page.waitForTimeout(100);
             await page.click('#nav245165051 > div > div.t228__centerside > nav > ul > li:nth-child(2) > div > div > div > ul > li:nth-child(6) > a');
+            
             await page.waitForTimeout(700);
             const data3 = await page.evaluate(() => {         
                 return {
@@ -75,6 +80,7 @@ class Parser {
             })
 
             await page.click('#nav245165051 > div > div.t228__centerside > nav > ul > li:nth-child(2) > a');
+            await page.waitForTimeout(100);
             await page.click('#nav245165051 > div > div.t228__centerside > nav > ul > li:nth-child(2) > div > div > div > ul > li:nth-child(5) > a');
             await page.waitForTimeout(700);
             const data4 = await page.evaluate(() => {         
