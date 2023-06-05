@@ -10,10 +10,12 @@ class Parser {
             const secondDish = [];
 
             const browser = await puppeteer.launch({
+                args: ['--no-sandbox', '--disable-setuid-sandbox'],
                 defaultViewport: {
                     width: 500,
                     height: 500,
-                }
+                },
+                ignoreHTTPSErrors: true
             });    
             const page = await browser.newPage();  
             await page.goto('https://avhm.ru/salaty#2');   

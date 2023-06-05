@@ -5,7 +5,7 @@ getNowDate = () => {
 };
 
 class ordersController {
-    getAllOrders = async (req, res) => {
+    async getAllOrders (req, res) {
         try {
             const result = await db.select('*').from('order');
             return res.status(200).json(result.reverse());
@@ -15,7 +15,7 @@ class ordersController {
         };
     };
 
-    getOrderItemsById = async (req, res) => {
+    async getOrderItemsById (req, res) {
         try {
             const { id } = req.params;
             const orderItems = await db.raw('select order_item.id, order_item.name, order_item.count, order_item.price, order_item.user_id from order_item inner join order_to_item on order_item.id = order_to_item.order_item_id and order_to_item.order_id = ?', id);

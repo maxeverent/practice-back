@@ -1,7 +1,7 @@
 const db = require('../db/dbConfig');
 
 class userController {
-    getUsers = async (req, res) => {
+    async getUsers (req, res) {
         try {
             const users = await db.select("*").from("user");
             return res.status(200).json(users);
@@ -10,7 +10,7 @@ class userController {
         }        
     };
 
-    selectUser = async (req, res) => {
+    async selectUser (req, res) {
         try {
             const { id } = req.params;
             await db('user').where('id', '=', id).update('is_selected', true);
@@ -20,7 +20,7 @@ class userController {
         }
     };
     
-    removeUser = async (req, res) => {
+    async removeUser (req, res) {
         try {
             const { id } = req.params;
             await db('user').where('id', '=', id).update('is_selected', false);
